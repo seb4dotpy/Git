@@ -1,0 +1,302 @@
+Esta es una guia de Git y Github
+
+Hola, bienvenido a la guia de Git y Github, me llamo Sebastian, y estoy aprendiendo a usar esta tecnologia, cuando termine de aprender voy a subirlo en ingles, espero te sirva :D
+
+Puedes seguirme en:
+Instagram: @sebaohberg
+Linkedin: https://www.linkedin.com/in/sebastian-ohberg-9b9a7a1a9/
+
+
+    -Que es Git y Github?
+        > Son un sistema de control de versiones, en palabras simples nos ayuda a gestionar las versiones de nuestros proyectos, tambien permite que varias personas puedan trabajar en el mismo
+        proyecto simultaneamente, ademas de poder ver el historial de cambios y quin hizo cada cambio.
+
+        Git = Se ejecuta de manera local en tu computadoram funciona mediante una terminal
+
+        Github = Es donde se alojan los proyectos en la web y es lo que permite que varios usuarios se conecten simultaneamente (Servidor remoto).
+
+    -Por que es util y por sobre todo NECESARIO utilizar un sistema de control de versiones?
+        > Para evitar crear muchos archivos, ya que por lo genera; el proyecto tendra cambios constantemente, ademas queda guardado la hora, fecha y quien hizo los cambios, ademas nos permite ver
+        el historial de cambios y volver atras en ellos.
+
+    -Cual es la diferencia entre - y --?
+        > - es para poner letras y -- es para poner palabras.Asi podras saber que poner en los distintos comandos y minimizar errores.
+
+    -Que es el staging y los repositorios?
+        > Al entrar a un directorio por la consola de Git, e introducimos el comando git init, se crea un area en la memoria ram llamada staging y es donde al principio se anaden los cambios,
+        y ademas se crea el repositorio (o carpeta llamada /.git/ tambien llamado MASTER)
+        > Cuando usamos git add, los cambios se mandan al staging (espacio en ram del proyecto), al usar el comando git commit -m ... el archivo se va al repositorio (MASTER).
+        > En pocas palabras staging es el estado temporal donde se agregaran los archivos que vas cambiando, y el repositorio es donde tu envias definitivamente los cambios al proyecto.
+        > Para revisar los cambios usas chekout.
+    
+    -Que es una Branch?(Rama)y Merge?
+        > Por defecto estamos en una Branch llamada MASTER que es donde cada vez que hacemos un commit creamos una nueva version de nuestro proyecto, cual es la importacia de esto?
+        si quieres hacer experimentos en alguna version tendrias que modificarla completa, aqui se vuelven utiles las Branch, donde para hacer un "experimento" en el proyecto creamos una Branch
+        experimental y le ponemos un nombre, asi podemos hacer experimentos, sin arriesgarnos a danar el proyecto principal. Obviamente no sirve solo para eso, podemos utilizar estas Branch para
+        solucionar bugs. Y cuando unes cambios entre una Branch y el MASTER se le llama merge.
+
+                                                                            COMANDOS Y SU EXPLICACION (MODO DE USO)
+                                                                            ---------------------------------------
+IMPORTANTE = Antes de hacer cualquier cosa es necesario configurar quien va a hacer los cambios, porque si no, va a utilizar la ruta por defecto
+Configuracion de Git
+=================================================================================================================================================================================================
+git config = Permite ver todas las configuraciones que tiene Git.
+=================================================================================================================================================================================================
+git config --list = Permite ver las configuraciones por defecto que tiene TU Git.
+Nota = Es util para saber que falta configurar.
+=================================================================================================================================================================================================
+git config --list --show-origin = Permite ver DONDE estan las configuraciones guardadas.
+Nota = Este comando es util para casos AVANZADOS.
+=================================================================================================================================================================================================
+git config --global user.name "NOMBRE DE USUARIO" = Permite cambiar los usuarios globales, o sea de nuestro equipo.
+=================================================================================================================================================================================================
+git config --global user.email "NOMBRE@CORREO.EJ" = Permite cambiar los correos globales.
+=================================================================================================================================================================================================
+AHORA TENEMOS NUESTRO Git CONFIGURADO.
+
+*************************************************************************************************************************************************************************************************
+
+=================================================================================================================================================================================================
+git init = Es para iniciar una carpeta como Git.
+=================================================================================================================================================================================================
+git status = Permite ver el estado de la carpeta que inicializamnos, o sea los cambios.Es una buena practica estar constantemente revisando el estado de nuestra modificacion.
+=================================================================================================================================================================================================
+git add "ALGO" = Permite anadir los cambios al repositorio de Github (importnate tiene que ser el nombre del archivo y la extension.).
+Nota = Son los cambios, aun no enviados al repositorio. SIEMPRE se hace antes de anadir algun cambio al repositorio.
+=================================================================================================================================================================================================
+git add . = Nos permite anadir TODOS los archivos que tengamos en la carpeta en la que estemos trabajando, y/o las carpetas que hayamos creado.
+=================================================================================================================================================================================================
+git rm "ALGO" = Permite anular los cambios que aun no envias al repositorio, pero si estan enviandose.
+=================================================================================================================================================================================================
+git rm --cached "ALGO" = Permite eliminar definitivamente los cambios enviados en staging y en COMMIT, pero NO de nuestro disco duro.(Con este comando eliminas los datos en memoria ram 
+"eliminas el add que enviaste anteriormente.").
+git rm --force = Elimina los cambios en Git y en nuestro disco duro.(Se pueden recuperar si es necesario)
+Nota = Estos dos comandos anteriores son muy importantes, porque ayudan a prevenir errores indeseados al proyecto. 
+=================================================================================================================================================================================================
+git commit -m "Mensaje" = Permite enviar definitivamente los archivos al repositorio.
+Nota = Se puede hacer simplemente con git commit, pero es una mala practica, ponerle un mensaje ayuda a revisar el historial de cambios hechos al codigo.
+Nota2 = Si enviamos el commit sin mensaje git nos va a pedir que lo  enviemos, por el mensaje, y para salir de ahi es la combinacion [esc+shift+z+z]. Esto sucede porque ejecuta un editor de 
+texto llamado Vim, y por eso se sale de esta manera.
+=================================================================================================================================================================================================
+cat archivo.extension = Nos permite ver que es lo que tiene un archivo determinado.
+=================================================================================================================================================================================================
+code archivo.extension = Nos permite abrir el VS Code directamente desde la terminal, esto nos ayuda a ingresar y modificar cambios rapidamente.
+=================================================================================================================================================================================================
+git log archivo.extension = Nos permite ver el historial de cambios que ha tenido nuestros pryectos.
+git log --stat = Nos permite ver los cambios especificos que se hicieron en nuestros proyectos.
+Nota = El numero que saldra al lado de commit es la etiqueta del commit hecho anteriormente, o sea el nombre interno que usa el sistema para controlar los cambios.
+=================================================================================================================================================================================================
+git show archivo.extension = Nos permite ver los cambios que han existido sobre un archivo.
+Nota = Esta funcion es util para cuando tenemos que revisar un codigo y ver por que se rompio.
+=================================================================================================================================================================================================
+git diff [NUMERO DEL COMMIT 1] [NUMERO DEL COMMIT 2] = Nos permite ves las diferencias entre un cambio y otro dentro del archivo.
+Nota = Es el numero feo que vemos al hacer el comando git log, copiamos y pegamos para ver.
+Nota2 = Nos mostrara los cambios en base a como hayamos colocado los codigos en el comando.
+Nota3 = Si usamos simplente git diff, se veran los cambios entre la version mas nueva y la anterior.
+=================================================================================================================================================================================================
+git reset [NUMERO DEL COMMIT] --hard = ELIMINIA TODO LO DE NUESTRO PROYECTO.
+git reset [NUMERO DEL COMMIT] --soft = Nos permite volver atras en el proyecto, pero los procesos en staging siguen ahi disponibles para el proximo commit.
+git reset HEAD = Saca nuestros archivos en el area de staging. NO para borrarlos, sino que para que estos ultimos cambios no se envien al commit.
+=================================================================================================================================================================================================
+git chechout [NUMERO DEL COMMIT] "archivo.extension" = Nos permite ver como era el proyecto en la version que elijamos del commit.
+Nota = Si hacemos un git status nos va a detectar que hicimos un cambio al archivo, por ende es importante hacer el proceso anterior pero en vez del numero, con la rama MASTER (git checkout 
+MASTER "archivo.extension"), para asi evitar hacer un commit de un proyecto antigo en el caso de que no lo queramos hacer.
+=================================================================================================================================================================================================
+
+Parte trabajo en servidores remotos:
+
+git clone url = Es el equivalente a git init, pero aplicado a los servidores remotos.
+Nota: Lo que hace es tar ena copia del master del servidor remoto donde este alojado nuestro poryecto y crea la base de datos de los cambios historicos en el repositorio local.
+=================================================================================================================================================================================================
+git push = Envia nuestro commit al repositorio remoto.
+Nota = Esto se hace posterior a que se hagan las pruebas y funcione el proyecto.
+=================================================================================================================================================================================================
+git fetch = Nos sirve para traer un archivo que alguien mas haya actualizado.
+Nota = Este comando trae los archivos al repositorio local, pero NO a los archivos.
+=================================================================================================================================================================================================
+git merge = Nos permite fusionar el repositorio actual con los archivos que tragimos desde el servidor remoto.
+=================================================================================================================================================================================================
+git pull = Nos permite hacer fetch y merge al mismo tiempo.
+=================================================================================================================================================================================================
+
+Introduccion a Branches o Ramas:
+
+    >Al abrir nuestra terminal Git estaremos principalmente en una rama llamada MASTER o rama principal, pero para hacer cambios sin afectar el proceso principal podemos crear ramas adicionales,
+    las que nos ayudan a solucionar problemas o hacer experimentos en nuestro proyecto.
+    
+
+
+git commit -am "Comentario" = Nos permite enviar los cambios al repositorio de manera directa, sin la necesidad de git add.
+Nota : Este comando solo funciona cuando a nuestro proyecto le hayamos hecho al menos una vez add y commit.
+=================================================================================================================================================================================================
+git branch nombre_de_la_rama = Nos permite crear una nueva rama.
+git branch = Nos permite ver las ramas que tenemos disponibles y en cual estamos.
+=================================================================================================================================================================================================
+git checkout nombre_de_la_rama = Nos permite movernos entre ramas.
+=================================================================================================================================================================================================
+git merge Nombre_de_la_rama "Comentario" = Este comando nos permite fucionar la Branch que hayamos seleccionado con otra.
+Nota = IMPORTANTE, este comando se ejecutara desde la rama en la cual estemos en el checkout. O sea que para enviar al master los cambios creados en la rama, tendremos que ejecutar el comando
+desde la rama MASTER.
+=================================================================================================================================================================================================
+
+    En caso de conflictos.
+    > Un conflicto sucede cuando uno o mas programadores editan LAS MISMAS lineas de codigo, entonces al hacer merge entre la rama que ambos editaron, con la rama MASTER, ocurre un conflicto.
+        VS Code soluciona el problema automaticamente al darle click al que vamos a dejar definitivo, pero en block de notas (por ejemplo) tendriamos que borrar la sintaxys que nos envia Git y 
+        dejar los valores que queremos dejar definitivamente, posteriormente hay que agregar los cambios (git commit -am "comentario")
+        IMPORTANTE = La resolucion del conflicto NUNCA es arbitraria, se tiene que comunicar el comflicto y tomar una decision.
+
+        NOTA = DEBIDO A LOS CONFLICTOS ENTRE PALABRAS GITHUB CAMBIA MASTER A MAIN, PARA ASI AYUDAR A ELIMINAR PALABRAS QUE PUEDAN SONAR RACISTAS QUE AUN A DIA DE HOY SE SIGUEN UTILIZANDO EN LA 
+        INDUSTRIA DE LA TECNOLOGIA :D 
+
+
+                                                                                    Como usar GitHub
+                                                                                    ----------------
+
+
+
+
+
+
+1.- Registrarse
+
+2.- Github tiene muchas opciones arriba a la derecha, en un simple +
+    -> Aqui dentro tenemos varias opciones
+        - New Repository = Nos permite crear un nuevo repositorio.
+        - Import Repository = Nos permite importar un repositorio, desde otro sistema de control de versiones.
+        - New Gist = Es un fragmento de codigo que quieres compartir.
+        - New Organization = Nos permite abrir el Gitchub de la empresa en la cual estemos trabajando.
+        - New Project = Para crean un nuevo proyecto dentro de nuestra empresa.
+
+3.- Creando un nuevo repositorio
+    -> Al seleccionar la opcion de "New repository", nos mostrara una estructura similar a esto:
+        - Owner(Usuario) / [] = Dentro de los corchetes pondremos el nombre al repositorio que creemos.
+        - Descriprion = Aqui pondremos una descripcion del proyecto. (Corta)
+        - Public/Private = Aqui seleccionamos si queremos que nuestro repositorio sea publico o privado.
+        - Initialize this repositorY with = Aqui nos entrega diferentes opciones para anadirle a nuestro nuevo repositorio.
+            * Add a README file = Esta opcion nos permite anadir un archivo README, en el cual podemos indicarle a quien este leyendo una opcion mas completa de como funicona nuestro proyecto.
+            * Add a .gitignore = 
+            * Choose a license = Es para indicar la licencia para nuestro proyecto, significa que cosas pueden hacer o no con nuestro codigo.
+
+4.- Una vez creado nuestro repositorio podremos encontrar varias cosas.
+    -> Arriba en nuestra URL tendremos el link del repositorio.
+    -> Luego nos mostrara cosas que vimos antes en la guia de Git.
+    -> Al hacer "Click" en nuestros archivos nos mostrara:
+        * History = Nos permite ver el historial de cambios.
+        * Raw = Nos mostrara el archivo en texto plano.
+        * Blame = Nos mostrara quien hizo los cambios al proyecto.
+
+5.- Como podemos poner mas archivos?
+    -> Vamos donde dice "CODE" = Aqui podremos ver una URL la cual copiaremos.
+    -> Nos vamos a la terminal de Git, asegurandonos de estar en la carpeta correcta.
+    -> Ahora le diremos a Git que vamos a agregarle un ORIGEN REMOTO de nuestros archivos
+        *git remote add origin [URL]
+    -> En principio parece que no pasa nada, pero al usar:
+        *git remote ==> Nos mostrara que ya tenemos nuestro origin.
+        *git remote -v = Nos mostrara nuestra URL dedes el origin, con FETCH y PUSH (Traer y enviar cosas).
+    -> Ahora para enviar nuestro proyecto usamos git push origin master = O sea enviar hacia el origen la rama master.
+     NOTA = Normalmente nos pedira que pongamos los datos.
+
+
+    -Que es el cifrado asimetrico?
+
+    -> Es un sistema de cifrado en que se crean dos claves, una PUBLICA y otra PRIVADA. Ambas estan vinculadas matematicamente, o sea que lo que cifre con mi LLAVE publica, solo se descifrara
+    con la llave PRIVADA. Entones, quien cifra el mensaje tendra esta llave PUBLICA para hacerlo, y esta se puede mandar sin publemas, porque es imposible descifrarla sin la llave PRIVADA que
+    es la que tendra el receptor real de nuestro mensaje.
+
+    -Por que es util?
+    -> Si quiero mandar un mensaje "secreto", en internet siempre es posible que nos lo intercepten, ahi es donde entra nuestro cifrado asimetrico.
+    -> En un entorno laboral, si nos roban nuestra computadora portatil, nos pueden crackear nuestra password y username, y si eso pasa pueden entrar a los servidores o directamente al proyecto.
+
+
+
+    -Git y Github nos permite hacer este proceso de cifrado de datos. 
+
+    -> Lo que haremos sera, crear nuestras llaves (PUBLICA y PRIVADA), le enviaremos la PUBLICA  a Github, y le diremos que para cierto repositorio solo se conecte, usando estas.
+    -> Usaremos el protocolo SSH (SECURE SHELL)(Antes usamos el protocolo https, el cual en principio es seguro, pero tiene la vulnerabilidad que hablamos antes).
+    -> Github posteriormente nos enviara su llave PUBLICA y nosotros la utilizaremos para cifrar los datos.
+
+1.- Abriremos nuestra Git BASH y revisaremos nuestra configuracion local git config -l
+2.- Como las llaves son PERSONALES y no por proyecto, usaremos nuestro correo que usamos en nuestro Github.
+3.- Ahora con git config --global user.email "CORREOGITHUB@EJEMPLO.COM" haremos la configuracion en toda nuestra pc con ese correo.
+4.- Ahora crearemos nuestra clave con el comando ssh-keygen -t rsa -b 4096 -C "CORREOGITHUB@EJEMPLO.COM"(-t indica que algoritmo usaremos en este cas RSA que es el mas comun, -b nos 
+indica la complejidad, -C es el correo al que se asigna, debe estar la c en mayuscula.) (Al apretar ENTER nos mostrara muchas cosas, no lo borres porque usaremos la direccion donde guardamos este
+proceso de crear las claves, pero si la create desde el home ~ sera suficiente)
+5.- Luego nos dira ENTER PASSPHRASE, que significa que puedes ponerle una contrasena adicional a nuestra llave publica y privada, lo mejor es ponerle una, pero no es necesario.
+IMPORTANTE = EL PROCESO ANTERIOR SOLO SIRVE PARA LINUX, PERO COMO EMULAMOS LINUX CON LA BASH, TAMBIEN NOS SIRVE.
+
+    *Para revisar si nuestro programa de llaves esta corriendo usaremos eval $(ssh agent -s) *Es importante revisarlo previamente*
+        - Este nos mostrara agent pid NUMERO (NUMERO va a variar dependiendo la computadora), esot significa que esta todo corriendo bienvenido bien.
+6.- Ahora agregaremos la llave al servidor ssh-add ~/.ssh/id_rsa
+    IMPORTANTE = NO ANADIREMOS LA LLAVE.PUB YA QUE ES LA PUBLICA Y QUEREMOS ANADIR LA PRIVADA.
+7.- Ahora nos conectaremos a GitHub, es improtante conectar TODOS losequipos con los que estemos trabajando, porque es una mala practica ir pasando la clave privada, por temas de 
+    seguridad.
+        - Copiaremos el codigo que esta en nuesto archivo .pub
+        - Iremos a nuestro perfil de GitHub y entraremos donde dice SSH and GPG KEYS
+        - Daremos click en "new ssh" y escribiremos lo que nos pida.
+        - Perfecto, ya tenemos configurado nuestro GitHub en SSH :D
+8.- Ahora iremos a nuestros repositorios y seleccionaremos la opcion clone with ssh. Copiamos.
+        - Ahora entraremos en el proyecto que estemos trabajando.
+        - Con el comando git remote -v, veremos las url de nuestro proyecto (Origin). La cambiaremos por nuestra direccion con SSH.
+        - Para esto usaremos el comando git remote set-url origin git.github.com:url/proyecto
+        - Cuando enviemos un proyecto git te avisara de que estas entrando a un repo desconocido, dont worry, si sabes que el link esta bien, hazlo.(Importante haber clonado antes el repo)
+
+
+=================================================================================================================================================================================================
+                                                                                    Tags y Versiones en Git y Github
+
+git log: Nos permite ver el historial de cambios en nuestro git.
+git log --all : Nos muestra todos los cambios hechos historicamente.
+git log --all --graph: Nos muestra el flujo de Branches.
+NOTA: Estos comandos se pueden complejizar aun mas, y nos mostraran todo mas comprimido y mas bonito.
+git log --all --graph --decorate --oneline: Nos muestra todo super decorado y comprimido.
+-> Para comprimir este comando absurdamente largo, usaremos alias "NombreDelAlias"="git log --all --graph --decorate --oneline" --> Una verdadera maravilla :D (en mi caso es branchtree)
+NOTA: Esto es un alias, no un tag.
+=================================================================================================================================================================================================
+Tags
+
+Los tags son importantes, porque, cuando estamos revisando las versiones, el nomrbe real de las versiones(git log) es el Hash, y con los tag cambiamos el nombre de ese Hash a la version correspondiente del proyecto
+
+git tag -a v0.1 -m "Mensaje" numeroHash: Cambia el nombre del hash a v0.1 (por convencion, y segun la version vamos a irlas cambiando a v0.2(..)v0.x), numeroHash representa el Hash que hayamos hecho.
+git tag: Muestra la lista de tags.
+git show-ref --tags: Muestra el Hash y el nombre especifico de cada tag.
+=================================================================================================================================================================================================
+Ahora, los tags son importantes principalmente en GitHub, para que nuestros colaboradores sean capaces de ver donde es que se han hecho los cambios, de una manera mas clara y sencilla.
+git push --tags: Nos permite enviar las tags a GitHub.
+git tag -d "tag": Nos permite eliminar la tag que hayamos creado.
+git push origin :refs/tags/"nombre de la tag": Nos permite borrar la tag desde GitHub.
+
+=================================================================================================================================================================================================
+Manejo de Branches en servidor
+
+En GitHub se ve principalmente la rama principal(master).
+git show-branch --all: Nos permite ver la historia de todas las ramas del proyecto.
+gitk: Nos muestra todo el proceso desde un software, mas ordenado y mas bonito que en la bash de git.
+git push origin "Nombre de la rama": Nos permite enviar la rama en la que estemos trabajando.
+=================================================================================================================================================================================================
+Configuracion para coolaboradores en GitHub
+
+Es importante configurar esto, porque si bien cualquiera puede clonar nuestro repositorio, no todos pueden coolaborar.
+Para hacerlo, desde nuestro repositorio en GitHub vamos a settings, al costado dice collaborators, y ahi agregamos el correo o nombre de usuario de quien queramos agregar.
+Luego se enviara un correo y al aceptarlo se tendra acceso al repositorio.
+=================================================================================================================================================================================================
+Flujo de trabajo
+
+No agregar archivos que no sean de texto plano, esto debido a que entre mas cambios se hagan al proyecto, mas pesado va a ser hacer pull, ademas de que GitHub no actualiza en tiempo real las modificaciones
+que hagamos a nuestro archivo binario.
+Es importante nunca trabajar directamente en la rama master, hay que hacerlo en las distintas ramas.
+Al trabajar en grupos de trabajo y fusionar las distintas ramas, es importante hacer una revision de todo lo que hay y si es que funciona bien, antes de enviarlo al proyecto completo.
+
+Desde la rama master -> git checkout master
+hacemos el merge -> git merge "nombre de la rama" "comentario"
+y se repite el proceso para las distintas ramas. Siempre se deben verificar antes.
+
+=================================================================================================================================================================================================
+
+Pull request
+
+Se suele trabajar en servidores de pruebas llamados staging, esto para simular un entorno real o parecido al real de nuestro proyecto. Esto para asegurarnos de que el proyecto funciona y esta listo para 
+ser lanzado oficialmente.
+Una pull request es cuando queremos enviar nuestro codigo al staging, queda en un lugarr intermedio para que este sea revisado. Y si este es aprovado, este se ejecutara en el staging.
+Luego si funciona, se hara nuevamente un pull request al servidor master.
+El encargado de revisar esto es el lider de proyecto o el DevOps(administrador del entorno de desarrollo)
+
