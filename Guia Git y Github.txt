@@ -270,7 +270,7 @@ Manejo de Branches en servidor
 
 En GitHub se ve principalmente la rama principal(master).
 git show-branch --all: Nos permite ver la historia de todas las ramas del proyecto.
-gitk: Nos muestra todo el proceso desde un software, mas ordenado y mas bonito que en la bash de git.
+git k: Nos muestra todo el proceso desde un software, mas ordenado y mas bonito que en la bash de git.
 git push origin "Nombre de la rama": Nos permite enviar la rama en la que estemos trabajando.
 =================================================================================================================================================================================================
 Configuracion para coolaboradores en GitHub
@@ -300,3 +300,45 @@ Una pull request es cuando queremos enviar nuestro codigo al staging, queda en u
 Luego si funciona, se hara nuevamente un pull request al servidor master.
 El encargado de revisar esto es el lider de proyecto o el DevOps(administrador del entorno de desarrollo)
 
+El pull request no hace merge automatico
+Es importante respetar el proceso de Code Review, es una buena practica.
+
+Fork -> Tenedor xd
+
+Es una utilidad para ver proyectos y ver sus avances, me permite clonarlo y poder coolaborar
+Hace una copia de un repositorio pero en mi usuario.
+
+GitHub permite ver los distintos Forks.
+---------------------------------------------------------------------------------------------------------------------
+
+Deployment
+-   No siempre se envia la rama master a produccion, a veces se envia una rama con un tag.
+
+Para hacer Deployment, copiamos la URL de nuestro proyecto
+git clone url
+y listo.
+---------------------------------------------------------------------------------------------------------------------
+.gitignore
+
+-> Es importante cuando estas trabajando con archivos que no deban ser publicados, como contrasenas
+o bases de datos.
+-> Los archivos binarios no pueden pasar 
+ se crea un archivo y se guarda como .gitignore y dentro de este archivo
+ con un * le decimos que queremos que ignore.
+ejemplo.
+ .gitignore
+ *.jpg
+ ---------------------------------------------------------------------------------------------------------------------
+ readme.md -> md significa Markdown
+ Es una buena practica porque permiten cambiar ligeramente como se ve un archivo de texto.
+ Se edita con Html y Markdown
+ https://pandao.github.io/editor.md/en.html <- Permite editar estos readme.md
+ ---------------------------------------------------------------------------------------------------------------------
+ GitHub Pages, Nos permite alojar un sitio web gratis.
+ pages.github.com <- El mismo github te muestra el proceso.
+    Es importante configurarlo con el mismo nombre de usuario
+    Ahora lo dejamos configurado con nuestro github pages.
+    -> Vamos a settings, github pages y seleccionamos master branch.
+    luego vamos a nombreUsuario.github.io
+
+ 
