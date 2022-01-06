@@ -5,6 +5,7 @@ Hola, bienvenido a la guia de Git y Github, me llamo Sebastian, y estoy aprendie
 Puedes seguirme en:
 Instagram: @sebaohberg
 Linkedin: https://www.linkedin.com/in/sebastian-ohberg-9b9a7a1a9/
+creditos: Freddy Vega, https://platzi.com/clases/git-github/ 
 
 
     -Que es Git y Github?
@@ -124,8 +125,6 @@ Introduccion a Branches o Ramas:
     >Al abrir nuestra terminal Git estaremos principalmente en una rama llamada MASTER o rama principal, pero para hacer cambios sin afectar el proceso principal podemos crear ramas adicionales,
     las que nos ayudan a solucionar problemas o hacer experimentos en nuestro proyecto.
     
-
-
 git commit -am "Comentario" = Nos permite enviar los cambios al repositorio de manera directa, sin la necesidad de git add.
 Nota : Este comando solo funciona cuando a nuestro proyecto le hayamos hecho al menos una vez add y commit.
 =================================================================================================================================================================================================
@@ -149,13 +148,8 @@ desde la rama MASTER.
         INDUSTRIA DE LA TECNOLOGIA :D 
 
 
-                                                                                    Como usar GitHub
-                                                                                    ----------------
-
-
-
-
-
+                                                    Como usar GitHub
+                                                    ----------------
 
 1.- Registrarse
 
@@ -270,7 +264,7 @@ Manejo de Branches en servidor
 
 En GitHub se ve principalmente la rama principal(master).
 git show-branch --all: Nos permite ver la historia de todas las ramas del proyecto.
-git k: Nos muestra todo el proceso desde un software, mas ordenado y mas bonito que en la bash de git.
+gitk: Nos muestra todo el proceso desde un software, mas ordenado y mas bonito que en la bash de git.
 git push origin "Nombre de la rama": Nos permite enviar la rama en la que estemos trabajando.
 =================================================================================================================================================================================================
 Configuracion para coolaboradores en GitHub
@@ -340,5 +334,68 @@ ejemplo.
     Ahora lo dejamos configurado con nuestro github pages.
     -> Vamos a settings, github pages y seleccionamos master branch.
     luego vamos a nombreUsuario.github.io
+------------------------------------------------------------------------------------------------------------------------
 
- 
+git rebase -> en el caso de estar trabajando en una rama, y quieras unirla completamnete al
+proyecto principal -UNA MUY MALA PRACTICA enviandola a servidores remoto- solo para repo locales
+
+ git rebase "nombre de la rama" <- esto se hace desde la rama en la que estemos trabajando,
+ y nombre de la rama es donde queremos hacer el rebase. Todo esto cambia el orden del historial.
+------------------------------------------------------------------------------------------------------------------------
+
+git stash <- permite recuperar datos almacenados en memoria.
+git stash list <- permite ver la memoria.
+git stash pop <- abre el stash que tenia antes y vuelve al estado modificado.
+    -> Si no te gusta, haces ctrl+z en el cogio, guardas y listo.
+git stash branch "nombre de la rama" <- permite guardar el stash en una rama.
+git stash drop <- elimina un stash que no queramos guardar.
+------------------------------------------------------------------------------------------------------------------------
+
+git clean --dry-run <- mostrara todos los archivos que se van a eliminar, pero sin eliminarlos.
+git clean -f <- borra lo que nos haya dicho, no borrara carpetas, borra archivos.
+    tampoco borrara archivos marcados por nuestro .gitignore
+------------------------------------------------------------------------------------------------------------------------
+    
+git cherry-pick <- Cuando avanzas en una rama, pero necesitas en master un avance de la rama.
+Se utiliza con las Stash que guardas en distintas ramas.
+Vas a la rama principalgit cherry-pick "Hash de la rama"
+------------------------------------------------------------------------------------------------------------------------
+
+Reconstrui commits: en caso de que mandaste algo que no tenias realmetne terminado.
+debes anadir tus cambios con git add "archivo"
+git commit --amend <- modifica el comit anterior y lor "repara"
+------------------------------------------------------------------------------------------------------------------------
+EN CASO DE EMERGENCIA
+
+git reflog <- No olvida nada, aunque lo hayamos borrado, nos permite revisar todo
+se copia el commit {} que estaba todo correcto
+git reset --SOFT copi{} <- mantiende lo que este en staging en staging.
+git reset --hard hash <- resetea todo.Este es el que mas se usa.
+------------------------------------------------------------------------------------------------------------------------
+Buscar en archivos y commits
+
+log para los archivos, grep para los commits
+
+Entre ams crece el proyecto, querremos buscar mas cosas.
+git grep "palabra que buscas" permite buscar todas las veces que usaste esa palabra.
+git grep -n "palabra que buscas" permite lo anterio, pero muestra la linea.
+git grep -c "palabra que buscas" Permite contar cuantas veces usaste cierta palabra.
+------------------------------------------------------------------------------------------------------------------------
+Comandos y recursos colaborativos: son alias de git creados por harry roberts, para que el equipo
+    fuera mas coolaborativo.
+
+git shortlog <- muesta cuantos commits ha hecho cada persona.
+git shortlog -sn <- muestra todas las personas que han hecho commits.
+git shortlog -sn --all <- Muestra todos los commits, incluso los borrados
+git shortlog -sn --all --no-merges <- excluye los merges.
+
+git blame -c <- ve quien hace cada cambio. indentado.
+git blame "archivo" -Lx,y -c <- permite ver quien modifico desde la linea x hasta la y
+
+git branch -r <- ves las ramas remotas.
+git branch -a <- muestra todas las ramas.
+
+
+
+
+
