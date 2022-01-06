@@ -218,7 +218,7 @@ proceso de crear las claves, pero si la create desde el home ~ sera suficiente)
 5.- Luego nos dira ENTER PASSPHRASE, que significa que puedes ponerle una contrasena adicional a nuestra llave publica y privada, lo mejor es ponerle una, pero no es necesario.
 IMPORTANTE = EL PROCESO ANTERIOR SOLO SIRVE PARA LINUX, PERO COMO EMULAMOS LINUX CON LA BASH, TAMBIEN NOS SIRVE.
 
-    *Para revisar si nuestro programa de llaves esta corriendo usaremos eval $(ssh agent -s) *Es importante revisarlo previamente*
+    *Para revisar si nuestro programa de llaves esta corriendo usaremos eval $(ssh agent -) *Es importante revisarlo previamente*
         - Este nos mostrara agent pid NUMERO (NUMERO va a variar dependiendo la computadora), esot significa que esta todo corriendo bienvenido bien.
 6.- Ahora agregaremos la llave al servidor ssh-add ~/.ssh/id_rsa
     IMPORTANTE = NO ANADIREMOS LA LLAVE.PUB YA QUE ES LA PUBLICA Y QUEREMOS ANADIR LA PRIVADA.
